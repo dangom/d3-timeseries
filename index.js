@@ -92,12 +92,7 @@ const main = function(){
     const options = commandLineArgs(optionDefinitions)
     const data = loadData(options.input)
     const chart = drawChart(data)
-    fs.writeFile(options.output, chart, function(err) {
-        if(err) {
-            console.log(err)
-        }
-        console.log("The file was saved!")
-    })
+    fs.writeFileSync(options.output, chart)
 }
 
 if (require.main === module) {
