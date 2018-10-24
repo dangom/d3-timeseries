@@ -1,0 +1,18 @@
+#+TITLE: D3 (pulsar like) Timeseries
+
+* Installation
+
+Clone the repo and run =npm install=.
+The code is pretty much a port to Node.js of the following Observable notebook: https://beta.observablehq.com/@mbostock/psr-b1919-21
+Except I use it to draw timeseries from ICA decompositions as seen in the figure below:
+
+[[/Users/danielpgomez/Projects/d3-timeseries/examples/sample.png][Sample figure]]
+
+* Usage
+
+Usage of this tool is not advised. Currently it only supports datasets with N rows x 10 columns, where numbers are separated by 2 spaces (the formatting of FSL Melodic). It should be straightforward to generalize the script to accept other sizes of data, and to generate meaningful x-axis from user inputs, but I didn't have the time to work on that.
+
+#+BEGIN_SRC sh
+node index.js --input melodic_mix --output melodic_mix.svg
+svgexport melodic_mix.svg melodic_mix.png 1.5x
+#+END_SRC
