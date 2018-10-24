@@ -1,12 +1,17 @@
 #+TITLE: D3 (pulsar like) Timeseries
 
+* Disclaimer
+
+In case you landed in this repo looking for something useful, I'm sorry.
+
 * Installation
 
 Clone the repo and run =npm install=.
-The code is pretty much a port to Node.js of the following Observable notebook: https://beta.observablehq.com/@mbostock/psr-b1919-21
+The code is pretty much a port to Node.js of [[https://beta.observablehq.com/@mbostock/psr-b1919-21][this Observable notebook.]]
 Except I use it to draw timeseries from ICA decompositions as seen in the figure below:
 
-[[/Users/danielpgomez/Projects/d3-timeseries/examples/sample.png][Sample figure]]
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+[[./examples/sample.png]]
 
 * Usage
 
