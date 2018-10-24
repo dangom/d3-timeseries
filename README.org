@@ -11,7 +11,7 @@ The code is pretty much a port to Node.js of [[https://beta.observablehq.com/@mb
 Except I use it to draw timeseries from ICA decompositions as seen in the figure below:
 
 #+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-[[./examples/sample.png]]
+[[./examples/sample.svg]]
 
 * Usage
 
