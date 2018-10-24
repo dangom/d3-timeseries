@@ -77,7 +77,7 @@ function drawChart (data) {
 
     serie.append("path")
         .attr("fill", "none")
-        .attr("stroke", "#103a6a")
+        .attr("stroke", (d, i) => { return i % 2 === 0 ? "#103a6a" : "#ddd"})
         .attr("d", line)
 
     svg.append("g")
