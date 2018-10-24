@@ -1,12 +1,12 @@
 const d3Node = require("d3-node")
 const commandLineArgs = require("command-line-args")
 var fs = require("fs")
-const svg2png = require('svg2png')
 
 const [width, height] = [964, 400]
 
 const optionDefinitions = [
-    { name: "input", type: String, defaultOption: true},
+    { name: "input", type: String},
+    { name: "output", type: String}
 ]
 
 const d3n = new d3Node()
@@ -25,7 +25,8 @@ function loadData (fname) {
     var lines = fileContents.toString().split("\n")
 
     for (var i = 0; i < lines.length; i++) {
-        csvdata.push(lines[i].toString().split("  "))
+        let numbers = lines[i].toString().split(" ").map(Number)
+        csvdata.push(numbers)
     }
     return transpose(csvdata)
 }
@@ -76,7 +77,7 @@ function drawChart (data) {
 
     serie.append("path")
         .attr("fill", "none")
-        .attr("stroke", "black")
+        .attr("stroke", "#103a6a")
         .attr("d", line)
 
     svg.append("g")
@@ -86,12 +87,17 @@ function drawChart (data) {
 
 }
 
-var main = function(){
+
+const main = function(){
     const options = commandLineArgs(optionDefinitions)
     const data = loadData(options.input)
     const chart = drawChart(data)
-    console.log(chart)
-
+    fs.writeFile(options.output, chart, function(err) {
+        if(err) {
+            console.log(err)
+        }
+        console.log("The file was saved!")
+    })
 }
 
 if (require.main === module) {
