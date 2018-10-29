@@ -11,11 +11,11 @@ function transpose (m) {
 function loadData (fname) {
   let csvdata = [];
   const fileContents = fs.readFileSync(fname);
-  const lines = fileContents.toString().split("\n");
+  const rows = fileContents.toString().split("\n");
 
-  for (let i = 0; i < lines.length; i++) {
-    let numbers = lines[i].toString().split(" ").map(Number);
-    csvdata.push(numbers);
+  for (let row of rows) {
+    let columns = row.toString().split(" ").map(Number);
+    csvdata.push(columns);
   }
   return transpose(csvdata);
 }
