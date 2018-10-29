@@ -1,9 +1,5 @@
 #+TITLE: D3 (pulsar like) Timeseries
 
-* Disclaimer
-
-In case you landed in this repo looking for something useful, I'm sorry.
-
 * Installation
 
 Clone the repo and run =npm install=.
@@ -15,7 +11,7 @@ Except I use it to draw timeseries from ICA decompositions as seen in the figure
 
 * Usage
 
-Usage of this tool is not advised. Currently it only supports datasets with N rows x 10 columns, where numbers are separated by 2 spaces (the formatting of FSL Melodic). It should be straightforward to generalize the script to accept other sizes of data, and to generate meaningful x-axis from user inputs, but I didn't have the time to work on that.
+Usage of this tool is not currently advised, because for now  it only supports datasets with N rows x 10 columns, where numbers are separated by 2 spaces (the formatting of FSL Melodic). It should be straightforward to generalize the script to accept other sizes of data, and to generate meaningful x-axis from user inputs.
 
 #+BEGIN_SRC sh
 node index.js --input melodic_mix --output melodic_mix.svg
