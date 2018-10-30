@@ -1,3 +1,4 @@
+
 const d3Node = require("d3-node");
 const commandLineArgs = require("command-line-args");
 const fs = require("fs");
@@ -31,6 +32,35 @@ function drawChart (data) {
   const [width, height] = [964, 400];
 
   const svg = d3n.createSVG(width, height);
+
+  const colorRange = ['#ff3000', '#0c2e54', '#0c2e54', '#0c2e54', '#0ff']; //#103a6a
+
+  const color = d3.scaleLinear().range(colorRange).domain([1, 2, 3, 4, 5]);
+  const linearGradient = svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "linear-gradient")
+        .attr("gradientTransform", "rotate(90)");
+
+  linearGradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", color(1));
+
+  linearGradient.append("stop")
+    .attr("offset", "30%")
+    .attr("stop-color", color(2));
+
+  linearGradient.append("stop")
+    .attr("offset", "50%")
+    .attr("stop-color", color(3));
+
+  linearGradient.append("stop")
+    .attr("offset", "70%")
+    .attr("stop-color", color(4));
+
+  linearGradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", color(5));
+
 
   const x = d3.scaleLinear()
         .domain([0, data[0].length - 1])
@@ -67,7 +97,7 @@ function drawChart (data) {
 
   serie.append("path")
     .attr("fill", "none")
-    .attr("stroke", (d, i) => { return i % 2 === 0 ? "#103a6a" : "#ddd"})
+    .attr("stroke", (d, i) => { return i % 2 === 0 ? "url(#linear-gradient)" : "#ddd"})
     .attr("d", line);
 
   const xAxis = g => g
